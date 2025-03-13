@@ -237,7 +237,7 @@ export interface AbstractFunctionDatum {
    * Edited
    * True if the function is an inequality
    */
-  inequality?: boolean
+  inequality?: 'le'| 'ge'
 }
 
 export interface LinearDatum {
