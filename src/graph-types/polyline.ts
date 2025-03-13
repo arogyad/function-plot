@@ -26,6 +26,7 @@ export default function polyline(chart: Chart) {
         yMax = infinity()
         yMin = -infinity()
       }
+      const inequality = d.inequality
 
       function y(d: number[]) {
         return clamp(chart.meta.yScale(d[1]), yMin, yMax)
@@ -37,12 +38,22 @@ export default function polyline(chart: Chart) {
           return chart.meta.xScale(d[0])
         })
         .y(y)
+
       const area = d3Area()
         .x(function (d) {
           return chart.meta.xScale(d[0])
         })
         .y0(chart.meta.yScale(0))
         .y1(y)
+
+      // Maybe make a different function for inequality
+      // Setting y0 = yMin -> <=, removing y0 -> <=
+      const ineq = d3Area()
+      .x(function (d) {
+        return chart.meta.xScale(d[0])
+      })
+      .y0(chart.meta.yScale(yMin))
+      .y1(y)
 
       const vectorMarkerId = `${d.id}-vector-marker`
       if (d.fnType === 'vector') {
@@ -84,15 +95,16 @@ export default function polyline(chart: Chart) {
         .attr('class', cls)
         .attr('stroke-width', 1)
         .attr('stroke-linecap', 'round')
+        
 
       // enter + update
       innerSelection.merge(innerSelectionEnter).each(function () {
         const path = d3Select(this)
         let pathD
-        if (d.closed) {
+        if (d.closed || d.inequality) {
           path.attr('fill', computedColor)
           path.attr('fill-opacity', 0.3)
-          pathD = area
+          pathD = ineq ? ineq : area
         } else {
           path.attr('fill', 'none')
           pathD = line

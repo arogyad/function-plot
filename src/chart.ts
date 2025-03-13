@@ -712,7 +712,7 @@ export class Chart extends EventEmitter.EventEmitter {
         self.tip.move(coordinates)
       },
 
-      mouseover: function () {
+      mousepress: function () {
         self.tip.show()
       },
 

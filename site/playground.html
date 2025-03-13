@@ -28,10 +28,11 @@
       functionPlot.withWebWorkers(8)
       functionPlot({
         target: '#playground',
+        grid: true,
         data: [
-          { fn: 'x^2', nSamples: 4000, sampler: 'asyncInterval' },
-          { fn: 'sin(x)', nSamples: 4000, sampler: 'asyncInterval' },
-          { fn: '1/x', nSamples: 4000, sampler: 'asyncInterval' }
+          { fn: 'x^2', inequality: true, nSamples: 1000, sampler: 'asyncInterval', graphType: "polyline"},
+          { fn: 'x', inequality: true, nSamples: 1000, sampler: 'asyncInterval', closed: true, graphType: "polyline"},
+          { fn: '-x + 2', inequality: true, nSamples: 1000, sampler: 'asyncInterval', closed: true, graphType: "polyline"},
         ]
       })
       // functionPlot({

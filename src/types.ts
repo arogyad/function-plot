@@ -232,6 +232,12 @@ export interface AbstractFunctionDatum {
    * True to bypass the range limits, used for helper functions
    */
   skipBoundsCheck?: boolean
+
+  /**
+   * Edited
+   * True if the function is an inequality
+   */
+  inequality?: boolean
 }
 
 export interface LinearDatum {

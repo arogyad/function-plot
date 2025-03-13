@@ -80,6 +80,7 @@ export default function interval(chart: Chart) {
   const yScale = chart.meta.yScale
 
   function plotLine(selection: Selection<any, FunctionPlotDatum, any, any>) {
+    console.log("Interval")
     selection.each(async function (d) {
       const el = ((plotLine as any).el = d3Select(this))
       const index = d.index
