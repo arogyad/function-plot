@@ -48,8 +48,7 @@
   "standard": {
     "ignore": [
       "sandbox/",
-      "site/",
-      "dist/"
+      "site/"
     ]
   },
   "dependencies": {

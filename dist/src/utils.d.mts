@@ -12,7 +12,7 @@ export function getterSetter(config: any, option: any): void;
 export class getterSetter {
     constructor(config: any, option: any);
 }
-export function sgn(v: any): 1 | 0 | -1;
+export function sgn(v: any): 0 | 1 | -1;
 export function clamp(v: any, vMin: any, vMax: any): any;
 export function color(data: any, index: any): any;
 /**
